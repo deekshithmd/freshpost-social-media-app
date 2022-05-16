@@ -1,0 +1,21 @@
+.page-container {
+    width: 100%;
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 30rem auto 30rem;
+    grid-template-areas: 
+    "left main right";
+}
+
+.left-sidebar {
+    grid-area: left;
+}
+
+.main {
+    grid-area: main;
+}
+
+.right-sidebar {
+    grid-area: right;
+    background-color: green;
+}

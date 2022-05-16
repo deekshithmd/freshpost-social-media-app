@@ -1,0 +1,50 @@
+.home-container {
+    box-sizing: border-box;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "image auth";
+
+}
+
+.home-image {
+    grid-area: image;
+    padding: 2rem;
+    border-right: 2px solid var(--primary-color);
+}
+
+.home-image  img{
+    min-height:45rem;
+    width: 30rem;
+}
+
+.authentication {
+    grid-area: auth;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.options {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    border: 2px solid var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.item-1 {
+    grid-area: area1;
+    width: 50%;
+}
+
+.item-2 {
+    grid-area: area2;
+    width: 50%;
+}
+
+.forms {
+    width: 100%;
+}
