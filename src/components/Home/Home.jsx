@@ -1,16 +1,18 @@
 import "./home.css";
-import { Sidebar } from "components";
+import { LeftSidebar, RightSidebar } from "components";
 import { Outlet } from "react-router-dom";
 export const Home = () => {
   return (
     <div className="page-container">
       <div className="left-sidebar">
-        <Sidebar />
+        <LeftSidebar />
       </div>
-      <div className="main">
+      <div className="main-section">
         <Outlet />
       </div>
-      <div className="right-sidebar">Right</div>
+      <div className="right-sidebar">
+        <RightSidebar />
+      </div>
     </div>
   );
 };

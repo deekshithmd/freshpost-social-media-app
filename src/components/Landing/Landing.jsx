@@ -8,11 +8,11 @@ export const Landing = () => {
     width: "50%",
   };
   return (
-    <div className="home-container">
+    <div className="landing-container">
       <div className="home-image flex">
         <img src={image} alt="" />
       </div>
-      <div className="authentication">
+      <div className="authentication-section">
         <div className="options">
           <NavLink
             className="item-1 flex link-style-none text-lg text-bold"
@@ -29,7 +29,7 @@ export const Landing = () => {
             Register
           </NavLink>
         </div>
-        <div className="forms flex-center">
+        <div className="forms flex">
           <Outlet />
         </div>
         <NavLink to="/home">Home</NavLink>

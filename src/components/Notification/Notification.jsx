@@ -1,3 +1,10 @@
+import "./notification.css";
+import { LikeNotification, CommentNotification } from "components";
 export const Notification = () => {
-  return <h1>Notification</h1>;
+  return (
+    <>
+      <LikeNotification />
+      <CommentNotification />
+    </>
+  );
 };

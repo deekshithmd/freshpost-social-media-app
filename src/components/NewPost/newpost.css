@@ -1,0 +1,21 @@
+.new-post-container {
+    border: 1px solid var(--border-black);
+    padding: 1.5rem;
+}
+
+.new-post-container .avatar img {
+    width: 5rem;
+    height: 5rem
+}
+
+.new-post-container textarea {
+    width: 100%;
+    background-color: transparent;
+}
+
+.new-post-footer {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -6,7 +6,7 @@ export const Navigation = () => {
     <>
       <nav className="navigation-bar">
         <section className="brand logo">
-          <Link to="/">
+          <Link to="/home">
             <img
               src="https://i.postimg.cc/fR92NM3L/fresh.png"
               className="fresh-logo"

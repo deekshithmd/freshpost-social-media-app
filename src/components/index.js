@@ -4,12 +4,19 @@ import { Home } from "components/Home/Home";
 import { Footer } from "components/Footer/Footer";
 import { Login } from "components/Login/Login";
 import { Signup } from "components/Signup/Signup";
-import { Sidebar } from "components/Sidebar/Sidebar";
-import { Post } from "./Post/Post";
-import { Bookmark } from "./Bookmark/Bookmark";
-import { Notification } from "./Notification/Notification";
-import { Explore } from "./Explore/Explore";
-import { Profile } from "./Profile/Profile";
+import { LeftSidebar } from "components/LeftSidebar/LeftSidebar";
+import { Post } from "components/Post/Post";
+import { Bookmark } from "components/Bookmark/Bookmark";
+import { Notification } from "components/Notification/Notification";
+import { Explore } from "components/Explore/Explore";
+import { Profile } from "components/Profile/Profile";
+import { NewPost } from "components/NewPost/NewPost";
+import { PostCard } from "components/PostCard/PostCard";
+import { RightSidebar } from "components/RightSidebar/RightSidebar";
+import { FollowCard } from "components/FollowCard/FollowCard";
+import { ReplyCard } from "components/ReplyCard/ReplyCard";
+import { LikeNotification } from "components/LikeNotification/LikeNotification";
+import { CommentNotification } from "components/CommentNotification/CommentNotification";
 
 export {
   Navigation,
@@ -18,10 +25,17 @@ export {
   Login,
   Signup,
   Home,
-  Sidebar,
+  LeftSidebar,
   Post,
   Explore,
   Bookmark,
   Notification,
   Profile,
+  NewPost,
+  PostCard,
+  RightSidebar,
+  FollowCard,
+  ReplyCard,
+  LikeNotification,
+  CommentNotification,
 };

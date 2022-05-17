@@ -1,0 +1,26 @@
+.right-sidebar-container {
+    position: sticky;
+    top: 10rem;
+    padding: 1rem;
+    min-height: 50rem;
+    align-items: flex-start;
+}
+
+.right-sidebar-container input {
+    width: 100%;
+}
+
+.follow-list-container{
+    width: 100%;
+    padding: 1rem;
+}
+
+.follow-list-container header{
+    justify-content: space-between;
+}
+
+.suggested-list{
+    flex-direction: column;
+    gap: 1rem;
+}
+

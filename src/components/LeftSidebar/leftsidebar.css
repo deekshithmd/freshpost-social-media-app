@@ -1,13 +1,22 @@
-.sidebar-container {
+:root {
+    --option-hover: #c2c5c7;
+}
+
+.left-sidebar-container {
+    position: sticky;
+    top: 12rem;
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.sidebar-items {
     gap: 5px;
 }
 
-.list-item{
+.list-item {
     width: 20rem;
     border-radius: 25px;
     padding: 1rem;
@@ -15,11 +24,11 @@
     align-items: center;
 }
 
-.list-item:hover{
-    background-color: rgb(194, 197, 199);
+.list-item:hover {
+    background-color: var(--option-hover);
 }
 
-.sidebar-container .btn{
+.left-sidebar-container .btn {
     border-radius: 25px;
     width: 20rem;
 }

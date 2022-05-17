@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 70vh;
     display: grid;
-    grid-template-columns: 30rem auto 30rem;
+    grid-template-columns: 26rem auto 35rem;
     grid-template-areas: 
     "left main right";
 }
@@ -11,11 +11,11 @@
     grid-area: left;
 }
 
-.main {
+.main-section {
     grid-area: main;
+    padding: 1rem 2rem;
 }
 
 .right-sidebar {
     grid-area: right;
-    background-color: green;
 }

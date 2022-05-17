@@ -1,11 +1,10 @@
-.home-container {
+.landing-container {
     box-sizing: border-box;
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         "image auth";
-
 }
 
 .home-image {
@@ -19,7 +18,7 @@
     width: 30rem;
 }
 
-.authentication {
+.authentication-section {
     grid-area: auth;
     padding: 2rem;
     display: flex;

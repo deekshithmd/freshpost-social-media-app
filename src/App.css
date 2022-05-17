@@ -13,8 +13,8 @@
   top: 0;
 }
 
-.body{
-min-height: 70vh;
+.body {
+  min-height: 70vh;
 }
 
 .footer {
@@ -24,8 +24,26 @@ min-height: 70vh;
   right: 0;
 }
 
-.flex-center{
+.flex{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: 6rem auto;
+  height: fit-content;
+  grid-template-areas:
+    "profile content";
+}
+
+.profile {
+  grid-area: profile;
+  display: flex;
+  justify-content: center;
+}
+
+.post-content {
+  grid-area: content;
 }

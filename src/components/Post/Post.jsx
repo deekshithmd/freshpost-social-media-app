@@ -1,30 +1,18 @@
 import "./post.css";
-import { BiImage } from "react-icons/bi";
-import { AiOutlineFileGif } from "react-icons/ai";
-import { FaRegSmile } from "react-icons/fa";
+import { NewPost, PostCard,ReplyCard } from "components";
 
 export const Post = () => {
   return (
     <div className="post-container">
-      <div className="post-content">
-        <div class="avatar avatar-xs margin-r">
-          <img
-            class="img-responsive img-round"
-            src="https://i.postimg.cc/pLbNN3QY/myPhoto.jpg"
-            alt="Avatar"
-          />
-        </div>
-        <div className="post">
-          <textarea name="" id="" cols="30" rows="6" placeholder="Write something here..."></textarea>
-        </div>
+      <NewPost />
+      <div className="post-tag">
+        <h3>Latest Posts</h3>
       </div>
-      <div className="post-footer">
-        <div className="extra-data">
-          <BiImage className="margin-r text-xl" />
-          <AiOutlineFileGif className="margin-r text-lg" />
-          <FaRegSmile className="margin-r text-lg" />
-        </div>
-        <button className="btn btn-solid-primary margin-t">Post</button>
+      <div className="posts-container flex">
+        <PostCard />
+        <ReplyCard/>
+        <PostCard />
+        <PostCard />
       </div>
     </div>
   );

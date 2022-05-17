@@ -1,29 +1,4 @@
-.post-container {
-    border: 1px solid black;
-    padding: 2rem;
-}
-
-.post-content{
-    display: flex;
-    justify-content: stretch;
-}
-
-.post-container .avatar img {
-    width: 5rem;
-    height: 5rem
-}
-
-.post textarea{
-    width: 60rem;
-    background-color: transparent;
-}
-
-.extra-data{
-    margin-left: 6rem;
-}
-
-.post-footer{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
+.posts-container{
+    flex-direction: column;
+    gap: 1rem;
 }

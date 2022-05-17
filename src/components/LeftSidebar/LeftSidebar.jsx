@@ -1,17 +1,18 @@
-import "./sidebar.css";
+import "./leftsidebar.css";
 import { NavLink } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdOutlineExplore } from "react-icons/md";
 import { BsBookmarks } from "react-icons/bs";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-export const Sidebar = () => {
+
+export const LeftSidebar = () => {
   const activeStyle = {
     border: "2px solid var(--primary-color)",
   };
   return (
-    <section className="sidebar-container link-style-none text-md">
-      <div className="sidebar-items">
+    <section className="left-sidebar-container link-style-none text-md">
+      <div className="sidebar-items flex">
         <NavLink
           to="post"
           className="list-item link-style-none"
@@ -34,7 +35,7 @@ export const Sidebar = () => {
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           <BsBookmarks className="margin-r text-xl" />
-          Bookmark
+          Bookmarks
         </NavLink>
         <NavLink
           to="notification"
@@ -42,7 +43,7 @@ export const Sidebar = () => {
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
           <IoNotificationsOutline className="margin-r text-xl" />
-          Notification
+          Notifications
         </NavLink>
         <NavLink
           to="profile"
@@ -56,8 +57,7 @@ export const Sidebar = () => {
           Create New Post
         </button>
       </div>
-      <div className="user-data">
-      </div>
+      <div className="user-data"></div>
     </section>
   );
 };
