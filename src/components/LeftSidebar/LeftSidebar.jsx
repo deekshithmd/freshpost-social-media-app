@@ -11,7 +11,7 @@ export const LeftSidebar = () => {
     border: "2px solid var(--primary-color)",
   };
   return (
-    <section className="left-sidebar-container link-style-none text-md">
+    <aside className="left-sidebar-container link-style-none text-md">
       <div className="sidebar-items flex">
         <NavLink
           to="post"
@@ -58,6 +58,6 @@ export const LeftSidebar = () => {
         </button>
       </div>
       <div className="user-data"></div>
-    </section>
+    </aside>
   );
 };

@@ -1,7 +1,6 @@
 import "./landing.css";
 import { NavLink, Outlet } from "react-router-dom";
 import image from "assets/svg1.svg";
-import { Login } from "components";
 export const Landing = () => {
   const activeStyle = {
     backgroundColor: "var(--primary-color)",
@@ -32,7 +31,6 @@ export const Landing = () => {
         <div className="forms flex">
           <Outlet />
         </div>
-        <NavLink to="/home">Home</NavLink>
       </div>
     </div>
   );

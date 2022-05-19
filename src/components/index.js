@@ -1,9 +1,9 @@
 import { Navigation } from "components/Navigation/Navigation";
+import { Login } from "components/Authentication/Login";
+import { Signup } from "components/Authentication/Signup";
 import { Landing } from "components/Landing/Landing";
 import { Home } from "components/Home/Home";
 import { Footer } from "components/Footer/Footer";
-import { Login } from "components/Login/Login";
-import { Signup } from "components/Signup/Signup";
 import { LeftSidebar } from "components/LeftSidebar/LeftSidebar";
 import { Post } from "components/Post/Post";
 import { Bookmark } from "components/Bookmark/Bookmark";
