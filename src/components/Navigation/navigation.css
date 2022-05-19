@@ -1,0 +1,9 @@
+.navigation-bar {
+    z-index: 5;
+    position: sticky;
+    top: 0;
+}
+
+.brand-text {
+    margin-left: 0;
+}

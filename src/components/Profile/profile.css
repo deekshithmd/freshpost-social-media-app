@@ -1,0 +1,30 @@
+.profile-container{
+    height: fit-content;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile-container .avatar img{
+    width: 8rem;
+    height: 8rem;
+}
+
+.edit-btn{
+    padding: 5px 1rem;
+}
+
+.person-details{
+    width: 50rem;
+}
+
+.content-data{
+    width: max-content;
+    padding: 5px 1rem;
+    justify-content: space-evenly;
+}
+
+.profile-activity{
+    flex-direction: column;
+    padding: 1rem;
+}
