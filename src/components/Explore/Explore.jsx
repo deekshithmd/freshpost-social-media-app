@@ -6,6 +6,7 @@ import { useEffect } from "react";
 export const Explore = () => {
   const { allPosts } = useSelector((state) => state.post);
   const dispatch = useDispatch();
+  // console.log("All",allPosts)
   useEffect(() => {
     (() => {
       dispatch(getAllPosts());

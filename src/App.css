@@ -24,7 +24,7 @@
   right: 0;
 }
 
-.flex{
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,6 +32,7 @@
 
 .post-grid {
   display: grid;
+  width: 100%;
   grid-template-columns: 6rem auto;
   height: fit-content;
   grid-template-areas:
@@ -46,4 +47,8 @@
 
 .post-content {
   grid-area: content;
+}
+
+.hover {
+  cursor: pointer;
 }

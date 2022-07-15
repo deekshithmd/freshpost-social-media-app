@@ -1,6 +1,15 @@
 import "./profile.css";
 import { PostCard } from "components";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserPost } from "app/Slices/postSlice";
 export const Profile = () => {
+  const { userPost } = useSelector((state) => state.post);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserPost({ username: user.username }));
+  }, []);
   return (
     <>
       <div className="profile-container flex">
@@ -45,9 +54,9 @@ export const Profile = () => {
         <h3>Your Posts</h3>
       </div>
       <div className="posts-container flex">
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        {userPost?.map((post) => (
+          <PostCard key={post._id} data={post} />
+        ))}
       </div>
     </>
   );

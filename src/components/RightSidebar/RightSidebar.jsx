@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 export const RightSidebar = () => {
   const { allUsers } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
     (() => {
@@ -29,9 +30,11 @@ export const RightSidebar = () => {
           <span>Who To Follow</span> <span>See More</span>{" "}
         </header>
         <div className="suggested-list flex">
-          {allUsers?.map((user) => {
-            return <FollowCard key={user._id} user={user} />;
-          })}
+          {allUsers?.map((users) =>
+            users.id !== user.id ? (
+              <FollowCard key={users._id} userData={users} />
+            ) : null
+          )}
         </div>
       </div>
     </div>

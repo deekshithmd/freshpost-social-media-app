@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { followUser, unfollowUser } from "services";
 import axios from "axios";
 
 const initialState = {
@@ -39,6 +40,32 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+export const followUsers = createAsyncThunk(
+  "auth/followUsers",
+  async ({ followUserId, encodedToken }, thunkAPI) => {
+    try {
+      const response = await followUser({ followUserId, encodedToken });
+      console.log("followData", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const unfollowUsers = createAsyncThunk(
+  "auth/followUsers",
+  async ({ followUserId, encodedToken }, thunkAPI) => {
+    try {
+      const response = await unfollowUser({ followUserId, encodedToken });
+      // console.log("unfollowData", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -57,12 +84,11 @@ export const authSlice = createSlice({
       state.authStatus = "pending";
     },
     [loginUser.fulfilled]: (state, action) => {
-      (state.authStatus = "fulfilled"),
-        (state.isLoggedIn = true),
-        (state.token = action.payload.encodedToken),
-        (state.user = action.payload.foundUser),
-        localStorage.setItem("token", state.token),
-        localStorage.setItem("user", JSON.stringify(state.user));
+      (state.authStatus = "fulfilled"), (state.isLoggedIn = true);
+      state.token = action.payload.encodedToken;
+      state.user = action.payload.foundUser;
+      localStorage.setItem("token", state.token);
+      localStorage.setItem("user", JSON.stringify(state.user));
     },
     [loginUser.rejected]: (state, action) => {
       (state.authStatus = "Error"), (state.error = action.payload);
@@ -71,10 +97,31 @@ export const authSlice = createSlice({
       state.authStatus = "pending";
     },
     [signupUser.fulfilled]: (state, action) => {
-      (state.authStatus = "fulfilled"), (state.isSignedUp = true);
+      state.authStatus = "fulfilled";
+      state.isSignedUp = true;
     },
     [signupUser.rejected]: (state) => {
       state.authStatus = "rejected";
+    },
+    [followUsers.pending]: (state) => {
+      state.followStatus = "pending";
+    },
+    [followUsers.fulfilled]: (state, action) => {
+      state.followStatus = "fulfilled";
+      state.user = action.payload.user;
+    },
+    [followUsers.rejected]: (state, action) => {
+      state.followStatus = "rejected";
+    },
+    [unfollowUsers.pending]: (state) => {
+      state.unfollowStatus = "pending";
+    },
+    [unfollowUsers.fulfilled]: (state, action) => {
+      state.unfollowStatus = "fulfilled";
+      state.user = action.payload.user;
+    },
+    [unfollowUsers.rejected]: (state, action) => {
+      state.unfollowStatus = "rejected";
     },
   },
 });

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "app/Slices/postSlice";
 import { useEffect } from "react";
 export const Bookmark = () => {
-  const { allPosts } = useSelector((state) => state.post);
+  const { bookmarks } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,9 +18,13 @@ export const Bookmark = () => {
         <h3>Your Bookmarks</h3>
       </div>
       <div className="posts-container flex">
-        {allPosts?.map((post) => {
-          return <PostCard key={post._id} data={post} />;
-        })}
+        {bookmarks?.length > 0 ? (
+          bookmarks?.map((post) => {
+            return <PostCard key={post._id} data={post} />;
+          })
+        ) : (
+          <h3>No bookmarks</h3>
+        )}
       </div>
     </div>
   );

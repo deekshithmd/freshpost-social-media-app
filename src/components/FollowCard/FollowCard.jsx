@@ -1,6 +1,23 @@
 import "./followcard.css";
+import { useSelector, useDispatch } from "react-redux";
+import { followUsers, unfollowUsers } from "app/Slices/authSlice";
 
-export const FollowCard = ({ user }) => {
+export const FollowCard = ({ userData }) => {
+  const { user, token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const handleFollow = () => {
+    // console.log("follow");
+    // console.log("Data",userData)
+    dispatch(followUsers({ followUserId: userData._id, encodedToken: token }));
+  };
+
+  const handleUnFollow = () => {
+    // console.log("unfollow");
+    dispatch(
+      unfollowUsers({ followUserId: userData._id, encodedToken: token })
+    );
+  };
   return (
     <div className="person-data flex">
       <div className="profile-info flex">
@@ -12,12 +29,26 @@ export const FollowCard = ({ user }) => {
           />
         </div>
         <div className="user-names flex text-md margin-l">
-          {user.firstName} {user.lastName}
-          <span className="grey-text">@{user.username}</span>
+          {userData.firstName} {userData.lastName}
+          <span className="grey-text">@{userData.username}</span>
         </div>
       </div>
       <div className="follow-status">
-        <span className="text-md text-bold text-primary">Follow +</span>
+        {user?.following?.some((u) => u.id === userData.id) ? (
+          <span
+            className="text-md text-bold text-primary hover"
+            onClick={handleUnFollow}
+          >
+            Unfollow
+          </span>
+        ) : (
+          <span
+            className="text-md text-bold text-primary hover"
+            onClick={handleFollow}
+          >
+            Follow +
+          </span>
+        )}
       </div>
     </div>
   );

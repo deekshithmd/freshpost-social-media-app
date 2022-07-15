@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getUsers } from "services";
 
 const initialState = {
-  allUsers: [],
+  allUsers: JSON.parse(localStorage.getItem("users")) || [],
 };
 
 export const getAllUsers = createAsyncThunk(
@@ -22,18 +22,18 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-      [getAllUsers.pending]:(state)=>{
-          state.userStatus="pending"
-      },
-      [getAllUsers.fulfilled]:(state,action)=>{
-          state.userSatus="fulfilled",
-          state.allUsers=action.payload.users
-      },
-      [getAllUsers.rejected]:(state,action)=>{
-          state.userSatus="rejected",
-          state.allUsers=action.payload
-      }
+    [getAllUsers.pending]: (state) => {
+      state.userStatus = "pending";
+    },
+    [getAllUsers.fulfilled]: (state, action) => {
+      state.userSatus = "fulfilled";
+      state.allUsers = action.payload.users;
+    },
+    [getAllUsers.rejected]: (state, action) => {
+      state.userSatus = "rejected";
+      state.allUsers = action.payload;
+    },
   },
 });
 
-export default userSlice.reducer
+export default userSlice.reducer;
