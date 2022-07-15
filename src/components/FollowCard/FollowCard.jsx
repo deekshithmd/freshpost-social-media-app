@@ -1,6 +1,6 @@
 import "./followcard.css";
 
-export const FollowCard = () => {
+export const FollowCard = ({ user }) => {
   return (
     <div className="person-data flex">
       <div className="profile-info flex">
@@ -12,8 +12,8 @@ export const FollowCard = () => {
           />
         </div>
         <div className="user-names flex text-md margin-l">
-          <span>Deekshith M D</span>
-          <span className="grey-text">@deekshithmd</span>
+          {user.firstName} {user.lastName}
+          <span className="grey-text">@{user.username}</span>
         </div>
       </div>
       <div className="follow-status">

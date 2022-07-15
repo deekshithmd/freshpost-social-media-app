@@ -1,3 +1,3 @@
-export const getCredentials = (email, password) => {
-  return { email: email.value, password: password.value };
+export const getCredentials = (username, password) => {
+  return { username: username.value, password: password.value };
 };

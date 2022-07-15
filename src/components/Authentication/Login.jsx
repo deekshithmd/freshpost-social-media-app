@@ -2,22 +2,26 @@ import "./authentication.css";
 import axios from "axios";
 import { getCredentials, getTestData } from "utils";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
-import {loginUser} from "../../app/Slices/authSlice"
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../../app/Slices/authSlice";
 
 export const Login = () => {
   // const { setIsLoggedin, setUserData } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const {token}=useSelector((state)=>state.auth)
-  const dispatch=useDispatch()
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [error, setError] = useState(false);
   // const { successToast, errorToast } = useToast();
 
-  const testLogin = async () => {
+  useEffect(() => {
+    isLoggedIn ? navigate("/home") : navigate("/");
+  }, [isLoggedIn]);
 
-    dispatch(loginUser(getTestData()))
+  const testLogin = async () => {
+    dispatch(loginUser(getTestData()));
+    //console.log("is?", isLoggedIn);
 
     // console.log("clicked")
     // try {
@@ -43,6 +47,10 @@ export const Login = () => {
   };
 
   const handleLogin = async (event) => {
+    event.preventDefault();
+    const { username, password } = event.target.elements;
+    dispatch(loginUser(getCredentials(username, password)));
+
     // try {
     //   event.preventDefault();
     //   const { username, password } = event.target.elements;

@@ -1,6 +1,16 @@
 import "./rightsidebar.css";
 import { FollowCard } from "components";
+import { getAllUsers } from "app/Slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 export const RightSidebar = () => {
+  const { allUsers } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    (() => {
+      dispatch(getAllUsers());
+    })();
+  }, []);
   return (
     <div className="right-sidebar-container flex">
       <div className="input search-field outlined margin-t">
@@ -19,11 +29,9 @@ export const RightSidebar = () => {
           <span>Who To Follow</span> <span>See More</span>{" "}
         </header>
         <div className="suggested-list flex">
-          <FollowCard />
-          <FollowCard />
-          <FollowCard />
-          <FollowCard />
-          <FollowCard />
+          {allUsers?.map((user) => {
+            return <FollowCard key={user._id} user={user} />;
+          })}
         </div>
       </div>
     </div>

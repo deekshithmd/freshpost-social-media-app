@@ -1,13 +1,26 @@
 import { PostCard } from "components";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllPosts } from "app/Slices/postSlice";
+import { useEffect } from "react";
 export const Bookmark = () => {
+  const { allPosts } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (() => {
+      dispatch(getAllPosts());
+    })();
+  }, []);
+
   return (
     <div className="post-container">
       <div className="post-tag">
         <h3>Your Bookmarks</h3>
       </div>
       <div className="posts-container flex">
-        <PostCard />
-        <PostCard />
+        {allPosts?.map((post) => {
+          return <PostCard key={post._id} data={post} />;
+        })}
       </div>
     </div>
   );

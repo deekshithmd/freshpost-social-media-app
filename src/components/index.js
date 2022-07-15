@@ -17,6 +17,7 @@ import { FollowCard } from "components/FollowCard/FollowCard";
 import { ReplyCard } from "components/ReplyCard/ReplyCard";
 import { LikeNotification } from "components/LikeNotification/LikeNotification";
 import { CommentNotification } from "components/CommentNotification/CommentNotification";
+import { RequiresAuth } from "components/RequiresAuth/RequiresAuth";
 
 export {
   Navigation,
@@ -38,4 +39,5 @@ export {
   ReplyCard,
   LikeNotification,
   CommentNotification,
+  RequiresAuth,
 };

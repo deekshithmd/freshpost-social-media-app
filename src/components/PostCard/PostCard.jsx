@@ -1,10 +1,11 @@
 import "./postcard.css";
-import { FiHeart } from "react-icons/fi";
+import { AiOutlineHeart } from "react-icons/ai";
 import { IoChatboxOutline } from "react-icons/io5";
 import { GrShareOption } from "react-icons/gr";
-import { BsBookmark } from "react-icons/bs";
+import { BsBookmark,BsBookmarkFill} from "react-icons/bs";
+import {FcLike} from "react-icons/fc"
 import { FiMoreHorizontal } from "react-icons/fi";
-export const PostCard = () => {
+export const PostCard = ({data}) => {
   return (
     <div className="post-grid post-card-container">
       <div className="profile">
@@ -20,25 +21,22 @@ export const PostCard = () => {
         <div className="profile-detail flex">
           <div className="user-names">
             <span className="text-md text-bold margin-r">Deekshith M D</span>
-            <span className="text-md grey-text">@deekshithmd</span>
+            <span className="text-md grey-text">@{data.username}</span>
           </div>
           <div className="more text-md">
             <FiMoreHorizontal />
           </div>
         </div>
         <p className="post-content text-md text-justify">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          quis tellus semper, suscipit urna a, venenatis dui. Fusce in mi
-          efficitur, cursus sem vitae, rhoncus ipsum. Praesent varius quam
-          luctus justo commodo, eget hendrerit lorem blandit. Nunc turpis
-          sapien, placerat vel tempor sit amet, tincidunt nec erat. Phasellus
-          faucibus nec ante a euismod.
+          {data.content}
         </p>
         <div className="post-footer text-lg flex">
-          <FiHeart />
+        <AiOutlineHeart/>
+          <FcLike/>
           <IoChatboxOutline />
           <GrShareOption />
           <BsBookmark />
+          <BsBookmarkFill/>
         </div>
       </div>
     </div>
