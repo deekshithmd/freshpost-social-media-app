@@ -22,7 +22,7 @@ export const FollowCard = ({ userData }) => {
     dispatch(getCurrentUser({ userId: user._id }));
   };
   return (
-    <div className="person-data flex">
+    <div className="person-data flex hover">
       <div className="profile-info flex">
         <div className="avatar avatar-xs">
           <img
@@ -46,7 +46,7 @@ export const FollowCard = ({ userData }) => {
           </span>
         ) : (
           <span
-            className="text-md text-bold text-primary hover"
+            className="text-md text-bold text-primary"
             onClick={handleFollow}
           >
             Follow +

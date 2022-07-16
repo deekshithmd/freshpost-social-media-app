@@ -21,10 +21,10 @@ const getPost = ({ postId }) => axios.get(`/api/posts/${postId}`);
 
 const getUserPosts = ({ username }) => axios.get(`/api/posts/user/${username}`);
 
-const addPost = ({ post, encodedToken }) =>
+const addPost = ({ postData, encodedToken }) =>
   axios.post(
     `/api/posts/`,
-    { post },
+    { postData },
     {
       headers: {
         authorization: encodedToken,

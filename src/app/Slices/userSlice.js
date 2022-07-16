@@ -23,7 +23,7 @@ export const getCurrentUser = createAsyncThunk(
   async ({ userId }, thunkAPI) => {
     try {
       const response = await getUser({ userId });
-      console.log("single", response.data);
+      // console.log("single", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

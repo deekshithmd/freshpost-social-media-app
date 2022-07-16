@@ -28,3 +28,21 @@
     flex-direction: column;
     padding: 1rem;
 }
+
+.modal-container{
+    display: flex;
+}
+
+.modal-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-body input{
+    border: 1px solid black;
+    width: 70%;
+    padding: 5px;
+}

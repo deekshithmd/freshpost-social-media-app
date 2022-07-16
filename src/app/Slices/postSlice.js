@@ -6,6 +6,9 @@ import {
   addBookmark,
   removeBookmark,
   getUserPosts,
+  addPost,
+  addComment,
+  getComments,
 } from "services";
 
 const initialState = {
@@ -92,6 +95,32 @@ export const removeBookmarks = createAsyncThunk(
   }
 );
 
+export const addPosts = createAsyncThunk(
+  "post/addPosts",
+  async ({ postData, encodedToken }, thunkAPI) => {
+    try {
+      const response = await addPost({ postData, encodedToken });
+      // console.log("add", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const addComments = createAsyncThunk(
+  "post/addComments",
+  async ({ commentData, postId, encodedToken }, thunkAPI) => {
+    try {
+      const response = await addComment({ commentData, postId, encodedToken });
+      // console.log("add", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const postSlice = createSlice({
   name: "post",
   initialState,
@@ -159,6 +188,16 @@ export const postSlice = createSlice({
     },
     [getUserPost.rejected]: (state) => {
       state.userPostStatus = "pending";
+    },
+    [addPosts.pending]: (state) => {
+      state.addPostStatus = "pending";
+    },
+    [addPosts.fulfilled]: (state, action) => {
+      state.addPostStatus = "fulfilled";
+      state.allPosts = action.payload.posts;
+    },
+    [addPosts.rejected]: (state) => {
+      state.addPostStatus = "pending";
     },
   },
 });

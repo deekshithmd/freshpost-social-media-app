@@ -46,7 +46,7 @@ export const followUsers = createAsyncThunk(
   async ({ followUserId, encodedToken }, thunkAPI) => {
     try {
       const response = await followUser({ followUserId, encodedToken });
-      console.log("followData", response.data);
+      // console.log("followData", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

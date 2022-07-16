@@ -6,12 +6,14 @@ import { getUserPost } from "app/Slices/postSlice";
 import { getCurrentUser } from "app/Slices/userSlice";
 import { logoutUser } from "app/Slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 export const Profile = () => {
   const navigate = useNavigate();
-  const { userPost } = useSelector((state) => state.post);
+  const { allPosts } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.auth);
   const { currentUser } = useSelector((state) => state.user);
-  console.log("profile", currentUser);
+  const [edit, setEdit] = useState(false);
+  // console.log("profile", currentUser);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserPost({ username: user?.username }));
@@ -20,6 +22,12 @@ export const Profile = () => {
 
   const logout = () => {
     dispatch(logoutUser());
+  };
+
+  const update = (e) => {
+    e.preventDefault();
+    setEdit(false)
+    console.log("update", e.target.elements);
   };
 
   return (
@@ -36,7 +44,43 @@ export const Profile = () => {
           {currentUser?.firstName} {currentUser?.lastName}
         </span>
         <span className="text-md grey-text">@{currentUser?.username}</span>
-        <button className="edit-btn text-sm text-bold">Edit Profile</button>
+        <button
+          className="edit-btn text-sm text-bold"
+          onClick={() => setEdit((p) => !p)}
+        >
+          Edit Profile
+        </button>
+
+        {edit && (
+          <div className="modal-container">
+            <div className="modal">
+              <form className="modal-body text-md" onSubmit={update}>
+                <label>Name</label>
+                <input type="text" name="name" defaultValue={user?.firstName} />
+
+                <label>Description</label>
+                <textarea
+                  type="text"
+                  name="description"
+                  defaultValue={user?.description}
+                />
+                <label>Website</label>
+                <input
+                  type="text"
+                  name="website"
+                  defaultValue={user?.website}
+                />
+                <button
+                  type="submit"
+                  className="btn btn-solid-primary"
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
         <button className="edit-btn text-sm text-bold" onClick={logout}>
           Logout
         </button>
@@ -75,9 +119,12 @@ export const Profile = () => {
         <h3>Your Posts</h3>
       </div>
       <div className="posts-container flex">
-        {userPost?.map((post) => (
-          <PostCard key={post._id} data={post} />
-        ))}
+        {allPosts?.map(
+          (post) =>
+            post?.username === user.username && (
+              <PostCard key={post._id} data={post} />
+            )
+        )}
       </div>
     </>
   );

@@ -23,7 +23,7 @@ export const Post = () => {
       </div>
       <div className="posts-container flex">
         {allPosts?.map((post) =>
-          post?.username === currentUser.username ||
+          post?.username === currentUser?.username ||
           currentUser?.following?.some(
             (p) => p?.username === post?.username
           ) ? (

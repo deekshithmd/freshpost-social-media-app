@@ -9,4 +9,7 @@ export {
   getUserPosts,
   followUser,
   unfollowUser,
+  addPost,
+  addComment,
+  getComments
 } from "services/services";
