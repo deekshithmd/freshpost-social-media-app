@@ -32,7 +32,7 @@ export const getUserPost = createAsyncThunk(
   async ({ username }, thunkAPI) => {
     try {
       const response = await getUserPosts({ username });
-      console.log("userPost", response.data);
+      // console.log("userPost", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -1,6 +1,6 @@
 import "./rightsidebar.css";
 import { FollowCard } from "components";
-import { getAllUsers } from "app/Slices/userSlice";
+import { getAllUsers, getCurrentUser } from "app/Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 export const RightSidebar = () => {
@@ -31,8 +31,8 @@ export const RightSidebar = () => {
         </header>
         <div className="suggested-list flex">
           {allUsers?.map((users) =>
-            users.id !== user.id ? (
-              <FollowCard key={users._id} userData={users} />
+            users?.id !== user?.id ? (
+              <FollowCard key={users?._id} userData={users} />
             ) : null
           )}
         </div>

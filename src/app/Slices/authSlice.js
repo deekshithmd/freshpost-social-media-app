@@ -18,6 +18,7 @@ export const loginUser = createAsyncThunk(
         username: username,
         password: password,
       });
+      // console.log("login compl", response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -32,7 +33,7 @@ export const signupUser = createAsyncThunk(
       const response = await axios.post("api/auth/signup", {
         ...data,
       });
-      console.log(response.data);
+      console.log("signup", response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -52,6 +53,15 @@ export const followUsers = createAsyncThunk(
     }
   }
 );
+
+export const logoutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
+  try {
+    localStorage.clear();
+    return thunkAPI.fulfillWithValue({});
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const unfollowUsers = createAsyncThunk(
   "auth/followUsers",
@@ -122,6 +132,16 @@ export const authSlice = createSlice({
     },
     [unfollowUsers.rejected]: (state, action) => {
       state.unfollowStatus = "rejected";
+    },
+    [logoutUser.fulfilled]: (state, action) => {
+      state.logoutStatus = "fulfilled";
+      state.user = null;
+      state.isSignedUp = false;
+      state.isLoggedIn = false;
+      state.token = null;
+    },
+    [logoutUser.rejected]: (state) => {
+      state.logoutStatus = "rejected";
     },
   },
 });

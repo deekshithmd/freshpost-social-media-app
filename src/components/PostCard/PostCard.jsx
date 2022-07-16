@@ -14,9 +14,10 @@ import {
 } from "app/Slices/postSlice";
 
 export const PostCard = ({ data }) => {
-  // console.log("Postcard Data", data);
+  console.log("Postcard Data", data);
   const { token, user } = useSelector((state) => state.auth);
   const { bookmarks } = useSelector((state) => state.post);
+  const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   // console.log("bookmark post",bookmarks)
   // console.log("user", user);
@@ -55,12 +56,15 @@ export const PostCard = ({ data }) => {
       <div className="post-card-content post-content">
         <div className="profile-detail flex">
           <div className="user-names">
-            <span className="text-md text-bold margin-r">Deekshith M D</span>
+            <span className="text-md text-bold margin-r">
+              {data?.firstName}
+              {data?.lastName}
+            </span>
             <span className="text-md grey-text">@{data?.username}</span>
           </div>
-          <div className="more text-md">
+          {/* <div className="more text-md">
             <FiMoreHorizontal />
-          </div>
+          </div> */}
         </div>
         <p className="post-content text-md text-justify">{data?.content}</p>
         <div className="post-footer text-lg flex">

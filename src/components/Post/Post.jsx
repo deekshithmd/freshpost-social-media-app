@@ -6,6 +6,7 @@ import { useEffect } from "react";
 
 export const Post = () => {
   const { allPosts } = useSelector((state) => state.post);
+  const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,13 +22,14 @@ export const Post = () => {
         <h3>Latest Posts</h3>
       </div>
       <div className="posts-container flex">
-        {
-          allPosts?.map(post=>{
-            return(
-              <PostCard key={post._id} data={post}/>
-            )
-          })
-        }
+        {allPosts?.map((post) =>
+          post?.username === currentUser.username ||
+          currentUser?.following?.some(
+            (p) => p?.username === post?.username
+          ) ? (
+            <PostCard key={post._id} data={post} />
+          ) : null
+        )}
       </div>
     </div>
   );
