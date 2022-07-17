@@ -27,7 +27,7 @@ export const FollowCard = ({ userData }) => {
         <div className="avatar avatar-xs">
           <img
             className="img-responsive img-round"
-            src="https://i.postimg.cc/pLbNN3QY/myPhoto.jpg"
+            src={userData.profileUrl}
             alt="Avatar"
           />
         </div>

@@ -20,6 +20,7 @@ export const PostCard = ({ data }) => {
   // console.log("Postcard Data", data);
   const { token, user } = useSelector((state) => state.auth);
   const { bookmarks } = useSelector((state) => state.post);
+  const { allUsers } = useSelector((state) => state.user);
   const [comment, setComment] = useState(false);
   const [commentText, setCommentText] = useState("");
   const dispatch = useDispatch();
@@ -57,6 +58,11 @@ export const PostCard = ({ data }) => {
     dispatch(getAllPosts());
   };
 
+  const profile = allUsers?.find((u) =>
+    u?.username === data?.username ? u : ""
+  );
+  // console.log("image", profile);
+
   return (
     // <div className="post-card-container">
     <div className="post-grid post-card-container">
@@ -64,7 +70,7 @@ export const PostCard = ({ data }) => {
         <div className="avatar avatar-xs">
           <img
             className="img-responsive img-round"
-            src="https://i.postimg.cc/pLbNN3QY/myPhoto.jpg"
+            src={profile?.profileUrl}
             alt="Avatar"
           />
         </div>

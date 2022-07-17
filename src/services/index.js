@@ -11,5 +11,6 @@ export {
   unfollowUser,
   addPost,
   addComment,
-  getComments
+  getComments,
+  updateUser
 } from "services/services";

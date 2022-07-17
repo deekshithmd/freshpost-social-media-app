@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUsers, getUser } from "services";
+import { getUsers, getUser, updateUser } from "services";
 
 const initialState = {
   currentUser: null,
@@ -24,6 +24,19 @@ export const getCurrentUser = createAsyncThunk(
     try {
       const response = await getUser({ userId });
       // console.log("single", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const updateUserData = createAsyncThunk(
+  "user/updateUserData",
+  async ({ userData, encodedToken }, thunkAPI) => {
+    try {
+      const response = await updateUser({ userData, encodedToken });
+      console.log("user", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -56,6 +69,16 @@ const userSlice = createSlice({
     },
     [getCurrentUser.rejected]: (state, action) => {
       state.currentUserStatus = "rejected";
+    },
+    [updateUserData.pending]: (state) => {
+      state.updateUserDataStatus = "pending";
+    },
+    [updateUserData.fulfilled]: (state, action) => {
+      state.updateUserDataStatus = "fulfilled";
+      state.currentUser = action.payload.user;
+    },
+    [updateUserData.rejected]: (state, action) => {
+      state.updateUserDataStatus = "rejected";
     },
   },
 });

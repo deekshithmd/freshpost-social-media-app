@@ -9,14 +9,14 @@ import { useState } from "react";
 export const NewPost = () => {
   const [postText, setPostText] = useState();
   //const { currentUser } = useSelector((state) => state.user);
-  const { token } = useSelector((state) => state.auth);
+  const { token, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const add = () => {
     // console.log("add click");
     dispatch(
       addPosts({ postData: { content: postText }, encodedToken: token })
     );
-    setPostText("")
+    setPostText("");
   };
   return (
     <div className="post-grid new-post-container">
@@ -24,7 +24,7 @@ export const NewPost = () => {
         <div className="avatar avatar-xs">
           <img
             className="img-responsive img-round"
-            src="https://i.postimg.cc/pLbNN3QY/myPhoto.jpg"
+            src={user?.profileUrl}
             alt="Avatar"
           />
         </div>
@@ -43,9 +43,9 @@ export const NewPost = () => {
         </div>
         <div className="new-post-footer">
           <div className="extra-data">
-            <BiImage className="margin-r text-lg" />
-            <AiOutlineFileGif className="margin-r text-lg" />
-            <FaRegSmile className="margin-r text-lg" />
+            <BiImage className="margin-r text-lg hover" />
+            <AiOutlineFileGif className="margin-r text-lg hover" />
+            <FaRegSmile className="margin-r text-lg hover" />
           </div>
           <button className="btn btn-solid-primary" onClick={add}>
             Post

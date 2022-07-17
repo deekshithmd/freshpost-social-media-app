@@ -14,6 +14,11 @@ export const users = [
     password: "deekshith123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    description:
+      "Learning FullStack web development in NeogCamp | Completed 5 FrontEnd Projects | HTML5, CSS, Javascript, ReactJS",
+    website: "https://github.com/deekshithmd",
+    profileUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658033367/social-media/myPhoto_z6ciez.jpg",
   },
   {
     _id: uuid(),
@@ -23,6 +28,8 @@ export const users = [
     password: "deekshithmogra123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profileUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
   },
   {
     _id: uuid(),
@@ -32,6 +39,8 @@ export const users = [
     password: "deepak123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profileUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031133/social-media/soil_g5sigb.jpg",
   },
   {
     _id: uuid(),
@@ -41,5 +50,7 @@ export const users = [
     password: "deepakmogra123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profileUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031845/social-media/jose-alfonso-sierra-K-VkvGjaMtI-unsplash_aefujk.jpg",
   },
 ];
