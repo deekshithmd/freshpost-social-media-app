@@ -238,7 +238,10 @@ export const PostCard = ({ data }) => {
                         defaultValue={c?.comment}
                         onChange={(e) => setUpdateComment(e.target.value)}
                       />
-                      <button onClick={() => commentUpdate(c._id)}>
+                      <button
+                        className="btn btn-solid-primary"
+                        onClick={() => commentUpdate(c._id)}
+                      >
                         Update
                       </button>
                     </div>

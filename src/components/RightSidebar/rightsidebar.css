@@ -3,7 +3,20 @@
     top: 10rem;
     padding: 1rem;
     min-height: 50rem;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.search-field{
+    width: 98%;
+}
+
+header{
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    padding: 6px;
 }
 
 .right-sidebar-container input {

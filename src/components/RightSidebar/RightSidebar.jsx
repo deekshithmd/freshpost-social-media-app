@@ -13,7 +13,7 @@ export const RightSidebar = () => {
     })();
   }, []);
   return (
-    <div className="right-sidebar-container flex">
+    <div className="right-sidebar-container">
       <div className="input search-field outlined margin-t">
         <input
           type="text"
@@ -24,10 +24,9 @@ export const RightSidebar = () => {
           <i className="fa fa-search"></i>
         </button>
       </div>
-      <div className="follow-list-container">
-        <header className="flex text-md text-bold margin-b">
-          {" "}
-          <span>Who To Follow</span> <span>See More</span>{" "}
+      <div className="follow-list-container margin-t">
+        <header className="text-md text-center text-bold margin-b">
+          People you may know
         </header>
         <div className="suggested-list flex">
           {allUsers?.map((users) =>
