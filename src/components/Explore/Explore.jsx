@@ -8,9 +8,7 @@ export const Explore = () => {
   const dispatch = useDispatch();
   // console.log("All",allPosts)
   useEffect(() => {
-    (() => {
-      dispatch(getAllPosts());
-    })();
+    dispatch(getAllPosts());
   }, []);
   return (
     <div className="explore-container flex">
@@ -25,9 +23,9 @@ export const Explore = () => {
         <span className="category text-center text-md">News</span>
       </div>
       <div className="explore-body flex">
-        {allPosts?.map((post) => {
-          return <PostCard key={post._id} data={post} />;
-        })}
+        {allPosts?.map((post) => (
+          <PostCard key={post._id} data={post} />
+        ))}
       </div>
     </div>
   );

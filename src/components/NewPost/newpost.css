@@ -11,6 +11,7 @@
 .new-post-container textarea {
     width: 100%;
     background-color: transparent;
+    overflow-y: scroll;
 }
 
 .new-post-footer {

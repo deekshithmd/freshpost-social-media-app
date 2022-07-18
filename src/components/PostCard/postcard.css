@@ -1,5 +1,7 @@
 .post-card-container {
-    border: 1px solid var(--border-black);
+    /* border: 1px solid var(--border-black); */
+    box-shadow: 0 0 5px var(--border-black);
+    border-radius: 10px;
     padding: 1.5rem;
     width: 100%;
 }
@@ -25,25 +27,29 @@
     align-items: center;
 }
 
-.comment {
-    border: 1px solid black;
+.comment-container {
+    box-shadow: 0 0 5px var(--border-black);
+    border-radius: 10px;
 }
 
-.comment input {
-    width: 80%;
+.comment-container input {
+    width: 85%;
     margin: 1rem;
-    border: 1px solid black;
+    box-shadow: 0 2px 5px var(--border-black);
+    border-radius: 5px;
+    padding: 1rem;
 }
 
 .comments {
-    border: 1px solid black;
+    border-top: 1px solid var(--border-black);
     padding: 1rem;
 }
 
-.commentt {
+.comment {
     padding: 1rem;
     font-size: 13px;
-    border: 1px solid black
+    box-shadow: 0 0 5px var(--border-black);
+    border-radius: 5px;
 }
 
 .more {

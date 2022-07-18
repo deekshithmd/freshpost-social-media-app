@@ -154,11 +154,12 @@ export const deleteComments = createAsyncThunk(
   "post/deleteComments",
   async ({ postId, commentId, encodedToken }) => {
     try {
-      console.log("deleting");
+      console.log("deleting post", { postId, commentId, encodedToken });
       const response = await deleteComment({ postId, commentId, encodedToken });
       console.log("delete", response.data);
       return response.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -174,7 +175,8 @@ export const updateComments = createAsyncThunk(
         commentId,
         encodedToken,
       });
-      console.log("delete", response.data);
+      // console.log("update", response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
