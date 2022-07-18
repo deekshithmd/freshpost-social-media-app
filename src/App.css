@@ -52,3 +52,8 @@
 .hover {
   cursor: pointer;
 }
+
+.modal-container{
+  margin-top: 5rem;
+  display: flex;
+}

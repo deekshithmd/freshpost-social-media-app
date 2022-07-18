@@ -8,7 +8,10 @@ import {
   getUserPosts,
   addPost,
   addComment,
-  getComments,
+  updatePost,
+  deletePost,
+  updateComment,
+  deleteComment,
 } from "services";
 
 const initialState = {
@@ -121,6 +124,63 @@ export const addComments = createAsyncThunk(
   }
 );
 
+export const deletePosts = createAsyncThunk(
+  "post/deletePosts",
+  async ({ postId, encodedToken }) => {
+    try {
+      const response = await deletePost({ postId, encodedToken });
+      // console.log("delete", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const updatePosts = createAsyncThunk(
+  "post/updatePosts",
+  async ({ postData, postId, encodedToken }) => {
+    try {
+      const response = await updatePost({ postData, postId, encodedToken });
+      // console.log("update", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteComments = createAsyncThunk(
+  "post/deleteComments",
+  async ({ postId, commentId, encodedToken }) => {
+    try {
+      console.log("deleting");
+      const response = await deleteComment({ postId, commentId, encodedToken });
+      console.log("delete", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const updateComments = createAsyncThunk(
+  "post/updateComments",
+  async ({ commentData, postId, commentId, encodedToken }) => {
+    try {
+      const response = await updateComment({
+        commentData,
+        postId,
+        commentId,
+        encodedToken,
+      });
+      console.log("delete", response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const postSlice = createSlice({
   name: "post",
   initialState,
@@ -199,6 +259,36 @@ export const postSlice = createSlice({
     [addPosts.rejected]: (state) => {
       state.addPostStatus = "pending";
     },
+    [deletePosts.pending]: (state) => {
+      state.deletePostStatus = "pending";
+    },
+    [deletePosts.fulfilled]: (state, action) => {
+      state.deletePostStatus = "fulfilled";
+      state.allPosts = action.payload.posts;
+    },
+    [deletePosts.rejected]: (state) => {
+      state.deletePostStatus = "pending";
+    },
+    [updatePosts.pending]: (state) => {
+      state.updatePostStatus = "pending";
+    },
+    [updatePosts.fulfilled]: (state, action) => {
+      state.updatePostStatus = "fulfilled";
+      state.allPosts = action.payload.posts;
+    },
+    [updatePosts.rejected]: (state) => {
+      state.updatePostStatus = "pending";
+    },
+    // [deleteComments.pending]: (state) => {
+    //   state.deleteCommentStatus = "pending";
+    // },
+    // [deleteComments.fulfilled]: (state, action) => {
+    //   state.deleteCommentStatus = "fulfilled";
+    //   state.allPosts = action.payload.posts;
+    // },
+    // [deleteComments.rejected]: (state) => {
+    //   state.deleteCommentStatus = "pending";
+    // },
   },
 });
 

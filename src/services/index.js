@@ -12,5 +12,9 @@ export {
   addPost,
   addComment,
   getComments,
-  updateUser
+  updateUser,
+  deletePost,
+  updatePost,
+  updateComment,
+  deleteComment
 } from "services/services";

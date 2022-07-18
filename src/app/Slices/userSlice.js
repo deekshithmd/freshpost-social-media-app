@@ -36,7 +36,7 @@ export const updateUserData = createAsyncThunk(
   async ({ userData, encodedToken }, thunkAPI) => {
     try {
       const response = await updateUser({ userData, encodedToken });
-      console.log("user", response.data);
+      // console.log("user", response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

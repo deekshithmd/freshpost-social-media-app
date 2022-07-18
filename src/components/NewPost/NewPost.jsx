@@ -42,10 +42,10 @@ export const NewPost = () => {
           ></textarea>
         </div>
         <div className="new-post-footer">
-          <div className="extra-data">
-            <BiImage className="margin-r text-lg hover" />
-            <AiOutlineFileGif className="margin-r text-lg hover" />
-            <FaRegSmile className="margin-r text-lg hover" />
+          <div className="extra-data hover">
+            <BiImage className="margin-r text-lg" />
+            <AiOutlineFileGif className="margin-r text-lg" />
+            <FaRegSmile className="margin-r text-lg" />
           </div>
           <button className="btn btn-solid-primary" onClick={add}>
             Post

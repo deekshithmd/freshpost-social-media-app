@@ -29,11 +29,6 @@
     padding: 1rem;
 }
 
-.modal-container{
-    margin-top: 5rem;
-    display: flex;
-}
-
 .modal-body{
     width: 100%;
     display: flex;
