@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUsers, getUser, updateUser } from "services";
+import {
+  getUsers,
+  getUser,
+  updateUser,
+} from "services";
 
 const initialState = {
   currentUser: null,
@@ -80,6 +84,29 @@ const userSlice = createSlice({
     [updateUserData.rejected]: (state, action) => {
       state.updateUserDataStatus = "rejected";
     },
+    // [addBookmarks.pending]: (state) => {
+    //   state.bookmarkStatus = "pending";
+    // },
+    // [addBookmarks.fulfilled]: (state, action) => {
+    //   state.bookmarkStatus = "fulfilled";
+    //   state.currentUser = {
+    //     ...state.currentUser,
+    //     bookmarks: action.payload.bookmarks,
+    //   };
+    // },
+    // [addBookmarks.rejected]: (state) => {
+    //   state.bookmarkStatus = "pending";
+    // },
+    // [removeBookmarks.pending]: (state) => {
+    //   state.bookmarkStatus = "pending";
+    // },
+    // [removeBookmarks.fulfilled]: (state, action) => {
+    //   state.bookmarkStatus = "fulfilled";
+    //   state.currentUSer.bookmarks = action.payload.bookmarks;
+    // },
+    // [removeBookmarks.rejected]: (state) => {
+    //   state.bookmarkStatus = "pending";
+    // },
   },
 });
 

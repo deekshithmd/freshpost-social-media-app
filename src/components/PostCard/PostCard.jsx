@@ -12,21 +12,21 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   likePosts,
   dislikePosts,
-  addBookmarks,
-  removeBookmarks,
   addComments,
   getAllPosts,
   deletePosts,
   updatePosts,
   deleteComments,
   updateComments,
+  addBookmarks,
+  removeBookmarks,
 } from "app/Slices/postSlice";
+import { getCurrentUser } from "app/Slices/userSlice";
 import { useState } from "react";
 
 export const PostCard = ({ data }) => {
   // console.log("Postcard Data", data);
   const { token } = useSelector((state) => state.auth);
-  const { bookmarks } = useSelector((state) => state.post);
   const { allUsers, currentUser } = useSelector((state) => state.user);
   const [comment, setComment] = useState(false);
   const [commentText, setCommentText] = useState("");
@@ -37,7 +37,7 @@ export const PostCard = ({ data }) => {
   const [postText, setPostText] = useState(data?.content);
   const dispatch = useDispatch();
   // console.log("bookmark post",bookmarks)
-  // console.log("user", user);
+  // console.log("user", currentUser);
 
   const profile = allUsers?.find((u) =>
     u?.username === data?.username ? u : ""
@@ -49,11 +49,15 @@ export const PostCard = ({ data }) => {
   const handleUnlike = () =>
     dispatch(dislikePosts({ postId: data?._id, encodedToken: token }));
 
-  const handleAddBookmark = () =>
+  const handleAddBookmark = () => {
     dispatch(addBookmarks({ postId: data?._id, encodedToken: token }));
+    dispatch(getCurrentUser({ userId: currentUser?._id }));
+  };
 
-  const handleRemoveBookmark = () =>
+  const handleRemoveBookmark = () => {
     dispatch(removeBookmarks({ postId: data?._id, encodedToken: token }));
+    dispatch(getCurrentUser({ userId: currentUser?._id }));
+  };
 
   const addComm = () => {
     dispatch(
@@ -123,7 +127,7 @@ export const PostCard = ({ data }) => {
             </span>
             <span className="text-md grey-text">@{data?.username}</span>
           </div>
-          {data?.username === currentUser.username && (
+          {data?.username === currentUser?.username && (
             <div className="more text-md hover">
               <FiMoreVertical
                 className="more-icon"
@@ -209,7 +213,7 @@ export const PostCard = ({ data }) => {
             {data?.comments?.length || 0}
           </span>
           {/* <GrShareOption className="hover" /> */}
-          {bookmarks.find((post) => post?._id == data?._id) ? (
+          {currentUser?.bookmarks?.find((post) => post?._id == data?._id) ? (
             <BsBookmarkFill className="hover" onClick={handleRemoveBookmark} />
           ) : (
             <BsBookmark className="hover" onClick={handleAddBookmark} />

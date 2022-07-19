@@ -168,7 +168,7 @@ export const Profile = () => {
             rel="noreferrer"
             className="nav-icon-link text-md"
           >
-            Bio Link
+            Portfolio Link
           </a>
         ) : (
           <p className=" person-details text-md text-center">

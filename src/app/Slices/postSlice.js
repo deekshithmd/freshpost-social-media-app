@@ -3,8 +3,6 @@ import {
   getPosts,
   likePost,
   dislikePost,
-  addBookmark,
-  removeBookmark,
   getUserPosts,
   addPost,
   addComment,
@@ -12,12 +10,13 @@ import {
   deletePost,
   updateComment,
   deleteComment,
+  addBookmark,
+  removeBookmark,
 } from "services";
 
 const initialState = {
   allPosts: [],
   userPost: [],
-  bookmarks: [],
 };
 
 export const getAllPosts = createAsyncThunk(
@@ -65,32 +64,6 @@ export const dislikePosts = createAsyncThunk(
     try {
       const response = await dislikePost({ postId, encodedToken });
       // console.log("dislike", response.data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-export const addBookmarks = createAsyncThunk(
-  "post/addBookmarks",
-  async ({ postId, encodedToken }, thunkAPI) => {
-    try {
-      const response = await addBookmark({ postId, encodedToken });
-      // console.log("bookmark", response.data.bookmarks);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-export const removeBookmarks = createAsyncThunk(
-  "post/addBookmarks",
-  async ({ postId, encodedToken }, thunkAPI) => {
-    try {
-      const response = await removeBookmark({ postId, encodedToken });
-      // console.log("bookmark", response.data.bookmarks);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -183,6 +156,32 @@ export const updateComments = createAsyncThunk(
   }
 );
 
+export const addBookmarks = createAsyncThunk(
+  "user/addBookmarks",
+  async ({ postId, encodedToken }, thunkAPI) => {
+    try {
+      const response = await addBookmark({ postId, encodedToken });
+      // console.log("bookmark", response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const removeBookmarks = createAsyncThunk(
+  "user/addBookmarks",
+  async ({ postId, encodedToken }, thunkAPI) => {
+    try {
+      const response = await removeBookmark({ postId, encodedToken });
+      console.log("bookmark", response.data.bookmarks);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const postSlice = createSlice({
   name: "post",
   initialState,
@@ -220,26 +219,6 @@ export const postSlice = createSlice({
     [dislikePosts.rejected]: (state, action) => {
       state.likeStatus = "rejected";
       state.allPosts = action.payload;
-    },
-    [addBookmarks.pending]: (state) => {
-      state.bookmarkStatus = "pending";
-    },
-    [addBookmarks.fulfilled]: (state, action) => {
-      state.bookmarkStatus = "fulfilled";
-      state.bookmarks = action.payload.bookmarks;
-    },
-    [addBookmarks.rejected]: (state) => {
-      state.bookmarkStatus = "pending";
-    },
-    [removeBookmarks.pending]: (state) => {
-      state.bookmarkStatus = "pending";
-    },
-    [removeBookmarks.fulfilled]: (state, action) => {
-      state.bookmarkStatus = "fulfilled";
-      state.bookmarks = action.payload.bookmarks;
-    },
-    [removeBookmarks.rejected]: (state) => {
-      state.bookmarkStatus = "pending";
     },
     [getUserPost.pending]: (state) => {
       state.userPostStatus = "pending";
