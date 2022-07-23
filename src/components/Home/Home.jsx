@@ -1,4 +1,4 @@
-import "./home.css";
+import "./home.scss";
 import { LeftSidebar, RightSidebar } from "components";
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";

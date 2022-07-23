@@ -1,4 +1,4 @@
-import "./rightsidebar.css";
+import "./rightsidebar.scss";
 import { FollowCard } from "components";
 import { getAllUsers, getCurrentUser } from "app/Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,4 +1,4 @@
-import "./postcard.css";
+import "./postcard.scss";
 import { AiOutlineHeart, AiOutlineFileGif } from "react-icons/ai";
 import { IoChatboxOutline } from "react-icons/io5";
 import { BiImage } from "react-icons/bi";

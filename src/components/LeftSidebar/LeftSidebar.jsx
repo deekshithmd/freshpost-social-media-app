@@ -1,4 +1,4 @@
-import "./leftsidebar.css";
+import "./leftsidebar.scss";
 import { NavLink } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdOutlineExplore } from "react-icons/md";

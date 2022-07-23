@@ -1,4 +1,4 @@
-import "./profile.css";
+import "./profile.scss";
 import { PostCard } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -156,7 +156,7 @@ export const Profile = () => {
         <button className="edit-btn text-sm text-bold" onClick={logout}>
           Logout
         </button>
-        <p className=" person-details text-md text-center">
+        <p className="person-details text-md text-center">
           {currentUser?.description
             ? currentUser?.description
             : "Edit Profile to add bio data"}

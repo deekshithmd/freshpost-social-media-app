@@ -1,0 +1,63 @@
+@import "./styles/mixin";
+
+.App {
+    display: grid;
+    min-height: 80vh;
+    grid-template-areas:
+        "navigaion"
+        "body"
+        "footer";
+
+    .nav {
+        grid-area: navigation;
+        position: sticky;
+        top: 0;
+    }
+
+    .body {
+        min-height: 70vh;
+    }
+}
+
+.footer {
+    grid-area: footer;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.flex {
+    @include flexCenter
+}
+
+.post-grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 6rem auto;
+    height: fit-content;
+    grid-template-areas:
+        "profile content";
+}
+
+.profile {
+    grid-area: profile;
+    display: flex;
+    justify-content: center;
+}
+
+.post-content {
+    grid-area: content;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.modal-container {
+    margin-top: 5rem;
+    display: flex;
+}
+
+.modal {
+    width: 40%;
+}

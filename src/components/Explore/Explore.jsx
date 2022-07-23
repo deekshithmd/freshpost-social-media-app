@@ -1,4 +1,4 @@
-import "./explore.css";
+import "./explore.scss";
 import { PostCard } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "app/Slices/postSlice";
@@ -6,10 +6,11 @@ import { useEffect } from "react";
 export const Explore = () => {
   const { allPosts } = useSelector((state) => state.post);
   const dispatch = useDispatch();
-  // console.log("All",allPosts)
+
   useEffect(() => {
     dispatch(getAllPosts());
   }, []);
+
   return (
     <div className="explore-container flex">
       <div className="post-tag">

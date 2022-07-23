@@ -1,4 +1,4 @@
-import "./post.css";
+import "./post.scss";
 import { NewPost, PostCard, ReplyCard } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "app/Slices/postSlice";

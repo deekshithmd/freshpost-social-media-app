@@ -1,4 +1,4 @@
-import "./error.css"
+import "./error.scss"
 import { Link } from "react-router-dom";
 export const Error=()=>{
   return (

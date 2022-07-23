@@ -1,4 +1,4 @@
-import "./followcard.css";
+import "./followcard.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { followUsers, unfollowUsers } from "app/Slices/authSlice";
 import { getCurrentUser } from "app/Slices/userSlice";
@@ -8,14 +8,11 @@ export const FollowCard = ({ userData }) => {
   const dispatch = useDispatch();
 
   const handleFollow = () => {
-    // console.log("follow");
-    // console.log("Data",userData)
     dispatch(followUsers({ followUserId: userData._id, encodedToken: token }));
     dispatch(getCurrentUser({ userId: user._id }));
   };
 
   const handleUnFollow = () => {
-    // console.log("unfollow");
     dispatch(
       unfollowUsers({ followUserId: userData._id, encodedToken: token })
     );

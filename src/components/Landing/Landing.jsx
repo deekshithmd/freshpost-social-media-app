@@ -1,4 +1,4 @@
-import "./landing.css";
+import "./landing.scss";
 import { NavLink, Outlet } from "react-router-dom";
 import image from "assets/svg1.svg";
 export const Landing = () => {

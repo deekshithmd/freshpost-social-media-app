@@ -1,4 +1,4 @@
-import "./navigation.css";
+import "./navigation.scss";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {

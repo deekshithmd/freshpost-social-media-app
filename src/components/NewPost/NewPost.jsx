@@ -1,4 +1,4 @@
-import "./newpost.css";
+import "./newpost.scss";
 import { BiImage } from "react-icons/bi";
 import { AiOutlineFileGif } from "react-icons/ai";
 import { FaRegSmile } from "react-icons/fa";
@@ -8,11 +8,9 @@ import { useState } from "react";
 
 export const NewPost = () => {
   const [postText, setPostText] = useState();
-  //const { currentUser } = useSelector((state) => state.user);
   const { token, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const add = () => {
-    // console.log("add click");
     dispatch(
       addPosts({ postData: { content: postText }, encodedToken: token })
     );
