@@ -81,7 +81,7 @@ const updateComment = ({ commentData, postId, commentId, encodedToken }) =>
   );
 
 const deleteComment = ({ postId, commentId, encodedToken }) =>
-  axios.delete(`api/comments/delete/${postId}/${commentId}`, {
+  axios.delete(`/api/comments/delete/${postId}/${commentId}`, {
     headers: {
       authorization: encodedToken,
     },

@@ -67,6 +67,7 @@ export const PostCard = ({ data }) => {
         encodedToken: token,
       })
     );
+    setCommentText("");
     dispatch(getAllPosts());
   };
 
@@ -223,6 +224,7 @@ export const PostCard = ({ data }) => {
           <div className="comment-container margin-t">
             <input
               type="text"
+              value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               placeholder="Type your comment here..."
             />

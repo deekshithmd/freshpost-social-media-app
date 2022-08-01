@@ -16,5 +16,7 @@ export {
   deletePost,
   updatePost,
   updateComment,
-  deleteComment
+  deleteComment,
 } from "services/services";
+
+export { uploadMedia } from "services/cloudinaryService";

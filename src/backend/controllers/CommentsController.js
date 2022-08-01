@@ -129,6 +129,7 @@ export const editPostCommentHandler = function (schema, request) {
  * */
 
 export const deletePostCommentHandler = function (schema, request) {
+  console.log("delete called")
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {

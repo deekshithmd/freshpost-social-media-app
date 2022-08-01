@@ -7,7 +7,9 @@ import { getCurrentUser, updateUserData } from "app/Slices/userSlice";
 import { logoutUser } from "app/Slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import { uploadMedia } from "services/cloudinaryService";
+import { FiCamera } from "react-icons/fi";
+
 export const Profile = () => {
   const navigate = useNavigate();
   const { allPosts } = useSelector((state) => state.post);
@@ -59,37 +61,21 @@ export const Profile = () => {
     // setImage(fileinput.value);
     setEdit(false);
   };
-  // const select = async () => {
-  //   console.log("uploading");
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   formData.append("upload_preset", "x2szzwml");
-  //   try {
-  //     const res = await axios.post(
-  //       "https://api.cloudinary.com/v1_1/do7mjbvlh/image/upload",
-  //       formData
-  //     );
-  //     console.log("url", res);
-  //   } catch (e) {
-  //     console.log("error", e);
-  //   }
-  //   // axios
-  //   //   .post("https://api.cloudinary.com/v1_1/do7mjbvlh/image/upload", formData)
-  //   //   .then((res) => console.log(res))
-  //   //   .catch((e) => console.log(e));
-  // };
 
   return (
     <>
       <div className="profile-container flex">
-        <div className="avatar avatar-sm">
-          <img
-            className="img-responsive img-round"
-            src={currentUser?.profileUrl}
-            alt="Avatar"
-          />
+        <div className="profile-picture-container">
+          <img className="bg-image" src={currentUser?.bgUrl} alt="" />
+          <div className="avatar avatar-sm flex">
+            <img
+              className="img-responsive img-round"
+              src={currentUser?.profileUrl}
+              alt="Avatar"
+            />
+          </div>
         </div>
-        <span className="text-lg text-bold margin-t">
+        <span className="text-lg text-bold name-margin">
           {currentUser?.firstName} {currentUser?.lastName}
         </span>
         <span className="text-md grey-text">@{currentUser?.username}</span>
@@ -109,17 +95,19 @@ export const Profile = () => {
                   src={currentUser?.profileUrl}
                   alt="Avatar"
                 />
+                <label for="upload" className="custom-input">
+                  <FiCamera />
+                  <input
+                    type="file"
+                    name="fileinput"
+                    id="upload"
+                    accept="image/*"
+                    onChange={(e) => setFile(e.target.files[0])}
+                  />
+                </label>
               </div>
-              <label className="custom-input">
-                <input
-                  type="file"
-                  name="fileinput"
-                  accept="image/*"
-                  onChange={(e) => setFile(e.target.files[0])}
-                />
-                Change
-              </label>
-              <button onClick={() => select()}>Upload</button>
+
+              <button onClick={() => uploadMedia(file)}>Upload</button>
               <form className="modal-body text-md" onSubmit={update}>
                 <label>First Name</label>
                 <input

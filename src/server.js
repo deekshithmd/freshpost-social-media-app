@@ -28,9 +28,9 @@ import {
 
 import {
   getPostCommentsHandler,
-  deletePostCommentHandler,
   editPostCommentHandler,
   addPostCommentHandler,
+  deletePostCommentHandler,
 } from "./backend/controllers/CommentsController";
 
 export function makeServer({ environment = "development" } = {}) {
@@ -116,7 +116,6 @@ export function makeServer({ environment = "development" } = {}) {
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
       );
-      this.passthrough();
       this.passthrough(
         "https://api.cloudinary.com/v1_1/do7mjbvlh/image/upload",
         ["post"]

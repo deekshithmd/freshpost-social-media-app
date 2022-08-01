@@ -19,6 +19,7 @@ export const RightSidebar = () => {
           type="text"
           name="username"
           placeholder="Search here for People, Posts..."
+          autoComplete="false"
         />
         <button className="search-icon">
           <i className="fa fa-search"></i>

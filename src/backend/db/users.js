@@ -19,6 +19,8 @@ export const users = [
     website: "https://github.com/deekshithmd",
     profileUrl:
       "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658033367/social-media/myPhoto_z6ciez.jpg",
+    bgUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
   },
   {
     _id: uuid(),
@@ -29,6 +31,8 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profileUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
+    bgUrl:
       "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
   },
   {
@@ -41,6 +45,8 @@ export const users = [
     updatedAt: formatDate(),
     profileUrl:
       "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031133/social-media/soil_g5sigb.jpg",
+    bgUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
   },
   {
     _id: uuid(),
@@ -52,5 +58,7 @@ export const users = [
     updatedAt: formatDate(),
     profileUrl:
       "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031845/social-media/jose-alfonso-sierra-K-VkvGjaMtI-unsplash_aefujk.jpg",
+    bgUrl:
+      "https://res.cloudinary.com/do7mjbvlh/image/upload/v1658031741/social-media/water_dbpe8a.jpg",
   },
 ];

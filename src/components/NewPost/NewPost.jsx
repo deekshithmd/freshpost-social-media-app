@@ -45,7 +45,10 @@ export const NewPost = () => {
             <AiOutlineFileGif className="margin-r text-lg" />
             <FaRegSmile className="margin-r text-lg" />
           </div>
-          <button className="btn btn-solid-primary" onClick={add}>
+          <button
+            className="btn btn-solid-primary"
+            onClick={() => (postText ? add() : null)}
+          >
             Post
           </button>
         </div>

@@ -17,7 +17,6 @@ export const Explore = () => {
         <h3>Explore</h3>
       </div>
       <div className="explore-categories flex">
-        <span className="category text-center text-md">For You</span>
         <span className="category text-center text-md">Trending</span>
         <span className="category text-center text-md">Technology</span>
         <span className="category text-center text-md">Sports</span>
