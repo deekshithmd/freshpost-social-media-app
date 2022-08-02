@@ -89,25 +89,29 @@ export const Profile = () => {
         {edit && (
           <div className="modal-container">
             <div className="modal">
-              <div className="avatar avatar-sm">
-                <img
-                  className="img-responsive img-round"
-                  src={currentUser?.profileUrl}
-                  alt="Avatar"
-                />
-                <label for="upload" className="custom-input">
-                  <FiCamera />
-                  <input
-                    type="file"
-                    name="fileinput"
-                    id="upload"
-                    accept="image/*"
-                    onChange={(e) => setFile(e.target.files[0])}
+              <div className="profile-img-container">
+                <img src={currentUser.bgUrl} className="bgimage" alt="" />
+                <div className="avatar avatar-sm">
+                  <img
+                    className="img-responsive img-round"
+                    src={currentUser?.profileUrl}
+                    alt="Avatar"
                   />
-                </label>
+                  <div className="custom-input">
+                    <label htmlFor="upload">
+                      <FiCamera />
+                      <input
+                        type="file"
+                        name="fileinput"
+                        id="upload"
+                        accept="image/*"
+                        onChange={(e) => setFile(e.target.files[0])}
+                      />
+                    </label>
+                  </div>
+                </div>
               </div>
-
-              <button onClick={() => uploadMedia(file)}>Upload</button>
+              {/* <button onClick={() => uploadMedia(file)}>Upload</button> */}
               <form className="modal-body text-md" onSubmit={update}>
                 <label>First Name</label>
                 <input
