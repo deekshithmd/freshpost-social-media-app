@@ -8,7 +8,7 @@ import { logoutUser } from "app/Slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { uploadMedia } from "services/cloudinaryService";
-import { FiCamera } from "react-icons/fi";
+import { RiEditCircleFill } from "react-icons/ri";
 
 export const Profile = () => {
   const navigate = useNavigate();
@@ -62,6 +62,25 @@ export const Profile = () => {
     setEdit(false);
   };
 
+  const upload = async (event) => {
+    console.log("uploading");
+    const formData = new FormData();
+    formData.append("file", event.target.files[0]);
+    formData.append("upload_preset", "j6mw5atf");
+    try {
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/do7mjbvlh/image/upload`,
+        {
+          method: "post",
+          body: formData,
+        }
+      );
+      console.log("uploaded", res);
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
+
   return (
     <>
       <div className="profile-container flex">
@@ -90,7 +109,31 @@ export const Profile = () => {
           <div className="modal-container">
             <div className="modal">
               <div className="profile-img-container">
-                <img src={currentUser.bgUrl} className="bgimage" alt="" />
+                <div className="bg-container">
+                  <img
+                    src={currentUser.bgUrl}
+                    className="bgimage"
+                    alt="background"
+                  />
+                  <div className="editbg">
+                    <label htmlFor="upload">
+                      <RiEditCircleFill
+                        style={{
+                          color: "rgb(148, 245, 172)",
+                          width: "2rem",
+                          height: "2rem",
+                        }}
+                      />
+                      <input
+                        type="file"
+                        name="fileinput"
+                        id="upload"
+                        accept="image/*"
+                        onChange={upload}
+                      />
+                    </label>
+                  </div>
+                </div>
                 <div className="avatar avatar-sm">
                   <img
                     className="img-responsive img-round"
@@ -99,13 +142,19 @@ export const Profile = () => {
                   />
                   <div className="custom-input">
                     <label htmlFor="upload">
-                      <FiCamera />
+                      <RiEditCircleFill
+                        style={{
+                          color: "rgb(148, 245, 172)",
+                          width: "2rem",
+                          height: "2rem",
+                        }}
+                      />
                       <input
                         type="file"
                         name="fileinput"
                         id="upload"
                         accept="image/*"
-                        onChange={(e) => setFile(e.target.files[0])}
+                        onChange={uploadMedia}
                       />
                     </label>
                   </div>
