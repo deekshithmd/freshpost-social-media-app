@@ -1,11 +1,13 @@
 import "./landing.scss";
 import { NavLink, Outlet } from "react-router-dom";
 import image from "assets/svg1.svg";
+
 export const Landing = () => {
   const activeStyle = {
     backgroundColor: "var(--primary-color)",
     width: "50%",
   };
+
   return (
     <div className="landing-container">
       <div className="home-image flex">

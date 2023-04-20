@@ -45,6 +45,12 @@
         .post-footer {
             justify-content: space-between;
             align-items: center;
+
+            .icon-container {
+                display: flex;
+                height: 100%;
+                align-items: center;
+            }
         }
 
         .comment-container {

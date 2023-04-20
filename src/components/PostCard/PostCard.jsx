@@ -196,7 +196,7 @@ export const PostCard = ({ data }) => {
         )}
         <p className="post-content text-md text-justify">{data?.content}</p>
         <div className="post-footer text-lg flex">
-          <span>
+          <span className="icon-container">
             {data?.likes?.likedBy?.find(
               (like) => like?.username == currentUser?.username
             ) ? (
@@ -206,7 +206,7 @@ export const PostCard = ({ data }) => {
             )}
             {data?.likes?.likeCount}
           </span>
-          <span>
+          <span className="icon-container">
             <IoChatboxOutline
               className="hover"
               onClick={() => setComment((c) => !c)}
