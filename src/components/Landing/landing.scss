@@ -31,6 +31,16 @@
             border: 2px solid var(--primary-color);
             margin-bottom: 2rem;
 
+            a.active {
+                background: var(--primary-color);
+                width: "50%";
+            }
+
+            .selected {
+                background: var(--primary-color);
+                width: "50%";
+            }
+
             .item-1 {
                 grid-area: area1;
                 width: 50%;
