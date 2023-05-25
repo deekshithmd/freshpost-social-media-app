@@ -1,12 +1,8 @@
-import "./landing.css";
+import "./landing.scss";
 import { NavLink, Outlet } from "react-router-dom";
 import image from "assets/svg1.svg";
-import { Login } from "components";
+
 export const Landing = () => {
-  const activeStyle = {
-    backgroundColor: "var(--primary-color)",
-    width: "50%",
-  };
   return (
     <div className="landing-container">
       <div className="home-image flex">
@@ -15,16 +11,20 @@ export const Landing = () => {
       <div className="authentication-section">
         <div className="options">
           <NavLink
-            className="item-1 flex link-style-none text-lg text-bold"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            to="login"
+            className={`${({ isActive }) =>
+              isActive
+                ? "selected"
+                : ""} item-1 flex link-style-none text-lg text-bold`}
+            to="/login"
           >
             Login
           </NavLink>
           <NavLink
-            className="item-2 flex link-style-none text-lg text-bold"
+            className={`${({ isActive }) =>
+              isActive
+                ? "selected"
+                : ""} item-2 flex link-style-none text-lg text-bold`}
             to="signup"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Register
           </NavLink>
@@ -32,7 +32,6 @@ export const Landing = () => {
         <div className="forms flex">
           <Outlet />
         </div>
-        <NavLink to="/home">Home</NavLink>
       </div>
     </div>
   );

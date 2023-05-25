@@ -1,0 +1,22 @@
+.new-post-container {
+    border: 1px solid var(--border-black);
+    padding: 1.5rem;
+
+    .avatar img {
+        width: 5rem;
+        height: 5rem
+    }
+
+    textarea {
+        width: 100%;
+        background-color: transparent;
+        overflow-y: scroll;
+    }
+
+    .new-post-footer {
+        height: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

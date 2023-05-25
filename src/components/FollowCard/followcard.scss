@@ -1,0 +1,19 @@
+.person-data {
+    justify-content: space-between;
+    padding: 3px 1rem;
+    width: 100%;
+
+    .profile-info {
+        .avatar {
+            img {
+                width: 5rem;
+                height: 5rem
+            }
+        }
+
+        .user-names {
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+    }
+}

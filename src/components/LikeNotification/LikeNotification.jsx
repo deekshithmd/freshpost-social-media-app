@@ -1,3 +1,4 @@
+import "./notification.scss";
 import { PostCard } from "components";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { FcLike } from "react-icons/fc";

@@ -1,4 +1,4 @@
-import "./footer.css";
+import "./footer.scss";
 export const Footer = () => {
   const personalData = [
     {
@@ -22,9 +22,9 @@ export const Footer = () => {
         by Deekshith M D
       </span>
       <ul className="footer-social-icons">
-        {personalData.map((data) => {
+        {personalData.map((data,index) => {
           return (
-            <li className="list-inline-item">
+            <li className="list-inline-item"key={index}>
               <a
                 href={data.link}
                 target="_blank"

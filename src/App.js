@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { Routes, Route } from "react-router-dom";
 import {
   Landing,
@@ -12,6 +12,7 @@ import {
   Bookmark,
   Notification,
   Profile,
+  RequiresAuth,
 } from "components";
 function App() {
   return (
@@ -25,12 +26,54 @@ function App() {
             <Route path="signup" element={<Signup />} />
           </Route>
           <Route path="/home" element={<Home />}>
-            <Route index element={<Post />} />
-            <Route path="post" element={<Post />} />
-            <Route path="explore" element={<Explore />} />
-            <Route path="bookmark" element={<Bookmark />} />
-            <Route path="notification" element={<Notification />} />
-            <Route path="profile" element={<Profile />} />
+            <Route
+              index
+              element={
+                <RequiresAuth>
+                  <Post />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="post"
+              element={
+                <RequiresAuth>
+                  <Post />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="explore"
+              element={
+                <RequiresAuth>
+                  <Explore />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="bookmark"
+              element={
+                <RequiresAuth>
+                  <Bookmark />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="notification"
+              element={
+                <RequiresAuth>
+                  <Notification />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <RequiresAuth>
+                  <Profile />
+                </RequiresAuth>
+              }
+            />
           </Route>
         </Routes>
       </div>

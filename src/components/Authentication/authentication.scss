@@ -8,16 +8,16 @@
     background-color: var(--background-color);
     padding: 2rem;
     box-shadow: 0px 0px 10px var(--primary-color);
+
+    .form-input-message {
+        width: 25rem;
+    }
 }
 
 .handle {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.form-input-message {
-    width: 25rem;
 }
 
 .margin-l-3-3 {

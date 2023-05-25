@@ -1,4 +1,4 @@
-import "./navigation.css";
+import "./navigation.scss";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {
@@ -6,7 +6,7 @@ export const Navigation = () => {
     <>
       <nav className="navigation-bar">
         <section className="brand logo">
-          <Link to="/home">
+          <Link to="/">
             <img
               src="https://i.postimg.cc/fR92NM3L/fresh.png"
               className="fresh-logo"

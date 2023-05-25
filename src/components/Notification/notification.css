@@ -1,8 +1,0 @@
-.notification{
-    border: 1px solid var(--border-black);
-    margin: 1rem;
-}
-
-.notification-message {
-    margin-left: 6rem;
-}

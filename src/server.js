@@ -26,6 +26,13 @@ import {
   editUserHandler,
 } from "./backend/controllers/UserController";
 
+import {
+  getPostCommentsHandler,
+  editPostCommentHandler,
+  addPostCommentHandler,
+  deletePostCommentHandler,
+} from "./backend/controllers/CommentsController";
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -70,6 +77,28 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/posts/like/:postId", likePostHandler.bind(this));
       this.post("/posts/dislike/:postId", dislikePostHandler.bind(this));
 
+      //post comments routes (public)
+      this.get("/comments/:postId", getPostCommentsHandler.bind(this));
+
+      //post comments routes (private)
+      this.post("/comments/add/:postId", addPostCommentHandler.bind(this));
+      this.post(
+        "/comments/edit/:postId/:commentId",
+        editPostCommentHandler.bind(this)
+      );
+      this.delete(
+        "/comments/delete/:postId/:commentId",
+        deletePostCommentHandler.bind(this)
+      );
+      // this.post(
+      //   "/comments/upvote/:postId/:commentId",
+      //   upvotePostCommentHandler.bind(this)
+      // );
+      // this.post(
+      //   "/comments/downvote/:postId/:commentId",
+      //   downvotePostCommentHandler.bind(this)
+      // );
+
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));
       this.get("/users/:userId", getUserHandler.bind(this));
@@ -86,6 +115,11 @@ export function makeServer({ environment = "development" } = {}) {
       this.post(
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
+      );
+      this.passthrough();
+      this.passthrough(
+        "https://api.cloudinary.com/v1_1/do7mjbvlh/image/upload",
+        ["post"]
       );
     },
   });
